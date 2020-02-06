@@ -1,0 +1,7 @@
+;!@Install@!UTF-8!
+SetEnvironment="InstallDir=%%S"
+ExtractDialogText="Extracting files"
+ExecuteFile="DrvSpace.exe"
+ExecuteParameters="/SILENT"
+GUIMode="2"
+;!@InstallEnd@!

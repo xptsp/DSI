@@ -1,0 +1,71 @@
+WinAPIEx UDF v3.5
+=================
+
+ADDED
+=====
+_WinAPI_ChangeWindowMessageFilterEx
+_WinAPI_CompressBitmapBits
+_WinAPI_ComputeCrc32
+_WinAPI_CreateANDBitmap
+_WinAPI_CreateDIBColorTable
+_WinAPI_CreateEmptyIcon
+_WinAPI_CreateNumberFormatInfo
+_WinAPI_EnumDllProc
+_WinAPI_EnumProcessHandles
+_WinAPI_FreeMemory
+_WinAPI_GetBitmapDimensionEx
+_WinAPI_GetDIBColorTable
+_WinAPI_GetDurationFormat
+_WinAPI_GetExtended
+_WinAPI_GetFinalPathNameByHandleEx
+_WinAPI_GetNumberFormat
+_WinAPI_GetObjectNameByHandle
+_WinAPI_InvertANDBitmap
+_WinAPI_IsAlphaBitmap
+_WinAPI_IsString
+_WinAPI_MakeWord
+_WinAPI_PathAddBackslash
+_WinAPI_PathAddExtension
+_WinAPI_PathCommonPrefix
+_WinAPI_PathCanonicalize
+_WinAPI_PathCreateFromUrl
+_WinAPI_PathIsUNC
+_WinAPI_PathIsUNCServer
+_WinAPI_PathIsUNCServerShare
+_WinAPI_PlgBlt
+_WinAPI_ReleaseStream
+_WinAPI_SaveHBITMAPToFile
+_WinAPI_SetBitmapDimensionEx
+_WinAPI_SetDIBColorTable
+_WinAPI_StrFormatByteSizeEx
+_WinAPI_SwapQWord
+_WinAPI_SwapWord
+_WinAPI_ZeroMemory
+
+FIXED
+=====
+Added missing Airplane.wav file that is used in some examples.
+Added missing Dialog Box Styles ($DS_*), Window Styles ( $WS_*), and Extended Window Styles ($WS_EX_*) constans.
+Added two optional parameters in _WinAPI_CreateDIB() functions, see its description.
+Rewrited _WinAPI_AddIconTransparency() function to improve performance.
+Rewrited _WinAPI_SwapDWord() function for other purposes, see its description.
+The _WinAPI_SaveHICONToFile() function now works with 16, 24, and 32 bits-per-pixel icon. Also creates an alpha channel for the 32 bits-per-pixel icon, and optionaly uses a PNG compression if icon size exceed or equal to 256x256 pixels.
+The following functions now works with pointers instead of structures, see its description.
+
+_WinAPI_CreateString
+_WinAPI_FindTextDlg
+_WinAPI_RegQueryMultipleValues
+_WinAPI_ReplaceTextDlg
+
+The _WinAPI_Create32BitHICON() function now always creates an icon with alpha channel and AND bitmask bitmap.
+Changed design of DllCall() call in some functions to improve performance.
+Changed header in _WinAPI_Create32BitHBITMAP() function, see its description.
+Changed the default buffer size from 8192 to 16384 characters that uses the _WinAPI_FindTextDlg() and _WinAPI_ReplaceTextDlg() functions.
+Fixed bug in many functions that could cause crash the script due to insufficient size of allocated memory. (Thanks Ward)
+Fixed bug in _WinAPI_AddIconOverlay(), _WinAPI_Create32BitHBITMAP(), and _WinAPI_Create32BitHICON() functions causing to incorrect conversion if the source icon was loaded from a PNG compressed image (Vista and later)
+Fixed bug in _WinAPI_AddIconTransparency() function causing to incorrect conversion if the source icon is non 32 bits-per-pixel icon.
+Fixed bug in _WinAPI_EnumResource... functions due to which the @error flag is always contained non-zero value. (Thanks Ward)
+Fixed bug in _WinAPI_GetClipBox() and _WinAPI_GetRgnBox() functions causing to error if $tagRECT structure has not been created before calling these functions.
+Fixed bug in _WinAPI_SaveHICONToFile() function causing to creating a corrupted .ico file if HICON is invalid.
+Fixed bug in _WinAPI_UniqueHardwareID() function causing to generating an incorrect GUID if $UHID_HDD flag is set.
+Fixed bug in some functions related with the wrong comparison to 0xFFFFFFFF. (Thanks money)
